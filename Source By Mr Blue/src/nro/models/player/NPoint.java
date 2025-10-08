@@ -64,10 +64,10 @@ public class NPoint {
     public long power;
     public long tiemNang;
 
-    public int hp, hpMax, hpg;
-    public int mp, mpMax, mpg;
-    public int dame, dameg;
-    public int def, defg;
+    public long hp, hpMax, hpg;
+    public long mp, mpMax, mpg;
+    public long dame, dameg;
+    public long def, defg;
     public int crit, critg, critdragon;
     public int GiamST;
     public int STCrit;
@@ -735,7 +735,7 @@ public class NPoint {
     }
 
     private void setHpHoi() {
-        this.hpHoi = this.hpMax / 100;
+        this.hpHoi = (int)(this.hpMax / 100);
         this.hpHoi += this.hpHoiAdd;
 
         if (this.tlHpHoi > 100) {
@@ -756,7 +756,7 @@ public class NPoint {
     }
 
     private void setMpHoi() {
-        this.mpHoi = this.mpMax / 100;
+        this.mpHoi = (int)(this.mpMax / 100);
         this.mpHoi += this.mpHoiAdd;
 
         if (this.tlMpHoi > 100) {
@@ -925,7 +925,7 @@ public class NPoint {
             hpMax = 2_147_483_647;
         }
 
-        this.hpMax = (int) hpMax;
+        this.hpMax = hpMax;
     }
 
     private void setHp() {
@@ -1044,25 +1044,25 @@ public class NPoint {
         this.mp = Math.min(this.mp, this.mpMax);
     }
 
-    public int getHP() {
+    public long getHP() {
         return Math.min(this.hp, this.hpMax);
     }
 
     public void setHP(long hp) {
         if (hp > 0) {
-            this.hp = (int) (hp <= this.hpMax ? hp : this.hpMax);
+            this.hp = (hp <= this.hpMax ? hp : this.hpMax);
         } else {
             player.setDie();
         }
     }
 
-    public int getMP() {
+    public long getMP() {
         return Math.min(this.mp, this.mpMax);
     }
 
     public void setMP(long mp) {
         if (mp > 0) {
-            this.mp = (int) (mp <= this.mpMax ? mp : this.mpMax);
+            this.mp = (mp <= this.mpMax ? mp : this.mpMax);
         } else {
             this.mp = 0;
         }
@@ -1207,10 +1207,6 @@ public class NPoint {
             dame /= 2;
         }
 
-        if (dame > 2_147_483_647) {
-            dame = 2_147_483_647;
-        }
-
         if (this.player.setClothes.ThanHuyDietChampa == 2) {
             dame += (dame * 10 / 100L);
         }
@@ -1231,19 +1227,19 @@ public class NPoint {
             }
         }
 
-        this.dame = (int) dame;
+        this.dame = dame;
     }
 
     public void setDame(long dame) {
         if (dame > 0) {
-            this.dame = (int) (dame <= this.dame ? dame : this.dame);
+            this.dame = (dame <= this.dame ? dame : this.dame);
         } else {
             this.dame = 0;
         }
     }
 
     private void setDef() {
-        this.def = this.defg * 4;
+        this.def = (long)this.defg * 4;
         this.def += this.defAdd;
 
         if (this.player.itemTime != null && this.player.itemTime.isUseNuocMia3) {
@@ -1330,11 +1326,11 @@ public class NPoint {
 
     public void addHp(long hp) {
         if (hp > 0) {
-            long potentialHp = (long) this.hp + hp;
+            long potentialHp = this.hp + hp;
             if (potentialHp > this.hpMax) {
                 this.hp = this.hpMax;
             } else {
-                this.hp = (int) Math.min(potentialHp, 2_147_483_647);
+                this.hp = Math.min(potentialHp, 2_147_483_647);
             }
         }
     }
@@ -1347,7 +1343,7 @@ public class NPoint {
         } else if (potentialMp < 0) {
             this.mp = 0;
         } else {
-            this.mp = (int) potentialMp;
+            this.mp = potentialMp;
         }
     }
 
@@ -1355,7 +1351,7 @@ public class NPoint {
         if (hp < 0) {
             this.hp = 0;
         } else {
-            this.hp = (int) Math.min(hp, 2_147_483_647);
+            this.hp = Math.min(hp, 2_147_483_647);
         }
     }
 
@@ -1363,7 +1359,7 @@ public class NPoint {
         if (mp < 0) {
             this.mp = 0;
         } else {
-            this.mp = (int) Math.min(mp, 2_147_483_647);
+            this.mp = Math.min(mp, 2_147_483_647);
         }
     }
 
@@ -1379,9 +1375,9 @@ public class NPoint {
         }
     }
 
-    public int getDameAttack(boolean isAttackMob) {
+    public long getDameAttack(boolean isAttackMob) {
         setIsCrit();
-        int dameAttack = this.dame;
+        long dameAttack = this.dame;
         intrinsic = this.player.playerIntrinsic.intrinsic;
         percentDameIntrinsic = 0;
         int percentDameSkill = 0;
@@ -1481,11 +1477,11 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
                 break;
             case Skill.MAKANKOSAPPO:
                 percentDameSkill = skillSelect.damage;
-                int dameSkill = (int) Math.min(2_147_483_647L, (long) this.mpMax * percentDameSkill / 100);
+                long dameSkill = Math.min(2_147_483_647L, this.mpMax * percentDameSkill / 100);
                 if (this.player.setClothes.picolo == 5) {
                     dameSkill *= 3 / 2;
                 }
-                return dameSkill;
+                return (long)dameSkill;
             case Skill.QUA_CAU_KENH_KHI:
                 long hpmob = 0;
                 long hppl = 0;
@@ -1513,7 +1509,7 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
                 if (dameqckk > 2_147_483_647) {
                     dameqckk = 2_147_483_647;
                 }
-                return (int) dameqckk;
+                return dameqckk;
             case Skill.DE_TRUNG:
                 if (player.setClothes.pikkoroDaimao == 5) {
                     dameAttack *= 4;
@@ -1521,7 +1517,7 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
                 if (dameAttack > 2_147_483_647) {
                     dameAttack = 2_147_483_647;
                 }
-                return (int) dameAttack;
+                return dameAttack;
         }
 
         if (intrinsic.id == 18 && this.player.effectSkill.isMonkey) {
@@ -1578,7 +1574,7 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
                 > 2_147_483_647) {
             dameAttack = 2_147_483_647;
         }
-        return (int) dameAttack;
+        return dameAttack;
     }
 
     public int getCurrPercentHP() {
@@ -1719,13 +1715,13 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
         return this.tlHutMp;
     }
 
-    public int subDameInjureWithDeff(long dame) {
+    public long subDameInjureWithDeff(long dame) {
         long def = this.def;
         dame -= def;
         if (dame < 0) {
             dame = 1;
         }
-        return (int) dame;
+        return dame;
     }
 
     /*------------------------------------------------------------------------*/
