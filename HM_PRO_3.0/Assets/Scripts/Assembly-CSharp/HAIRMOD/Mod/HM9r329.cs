@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Assembly_CSharp.HAIRMOD.Mod.Auto;
+using Assets.Scripts.Assembly_CSharp.HAIRMOD.Mod.Auto;
 using Assets.Scripts.Assembly_CSharp.HAIRMOD.Mod.Graphics;
 using Assets.Scripts.Assembly_CSharp.HAIRMOD.Mod.Menu;
 using Assets.Scripts.Assembly_CSharp.HAIRMOD.Mod.ModHelper.CommandMod.Chat;
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Assembly_CSharp.HAIRMOD.Mod
     internal class HM9r329
     {
 
-        internal static bool checkTypeData = true; //true là int, false là long
+        internal static bool checkTypeData = false; //true là int, false là long - CHANGED TO LONG FOR HIGH DAMAGE SUPPORT
         internal static bool rectBossChar = true; //Viền đỏ
         internal static bool shopKiGui = false; //false is statement for v231
         internal static bool achievement = false; //false is statement for goldbar
