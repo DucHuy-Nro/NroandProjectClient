@@ -1,0 +1,169 @@
+[Info][OPS.OBF][Setup] Active Editor Platform: WindowsEditorPlatform
+[Info][OPS.OBF][Setup] Active Build Platform: DefaultBuildPlatform
+[Info][OPS.OBF][Setup] Load Project
+[Debug][OPS.OBF][Setup] Load DataContainer
+[Debug][OPS.OBF][Setup] Load Obfuscator Settings
+[Debug][OPS.OBF][Setup] Load Pipeline Components
+[Debug][OPS.OBF][Setup] Found Components (3):
+  - Analyse Unity Animation Methods ()
+  - Analyse Unity Event Component (Analyse Unity Components for UnityEvents. Skip the attached method names.)
+  - Analyse MonoScript ()
+
+[Debug][OPS.OBF][Setup] Load Pipeline
+[Debug][OPS.OBF][Setup] Load Asset Cache
+[Debug][OPS.OBF][Setup] Found Extensions (8):
+  - .fbx
+  - .dae
+  - .3ds
+  - .dxf
+  - .obj
+  - .skp
+  - .anim
+  - .prefab
+
+[Info][OPS.OBF][OnPreBuild] Process component Analyse Unity Animation Methods
+[Info][OPS.OBF][OnPreBuild] Process component Analyse Unity Event Component
+[Info][OPS.OBF][OnPreBuild] Process component Analyse MonoScript
+[Info][OPS.OBF][OnAnalyse_Assets] Process component Analyse Unity Animation Methods
+[Info][OPS.OBF][OnProcess_Assets] Process component Analyse Unity Animation Methods
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Iterate components in loaded build scene Assets/Req.unity.
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found 2 Root GameObjects in Scene Assets/Req.unity
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found 6 Components in Scene Assets/Req.unity
+[Info][OPS.OBF][OnAnalyse_Component_Scenes] Process component Analyse Unity Event Component
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.Transform
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.Camera
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.AudioListener
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type WebIP
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Directional Light of type UnityEngine.Transform
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Directional Light of type UnityEngine.Light
+[Info][OPS.OBF][OnAnalyse_Component_Scenes] Process component Analyse MonoScript
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found mono script reference WebIP for Main Camera
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found mono script reference in serialized properties for Main Camera (1):
+  - WebIP
+
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Iterate components in not loaded build scene Assets/NROL.unity.
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found 2 Root GameObjects in Scene Assets/NROL.unity
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found 7 Components in Scene Assets/NROL.unity
+[Info][OPS.OBF][OnAnalyse_Component_Scenes] Process component Analyse Unity Event Component
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.Transform
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.Camera
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.FlareLayer
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type UnityEngine.AudioListener
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Main Camera of type Main
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Directional Light of type UnityEngine.Transform
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Find unity event methods in Directional Light of type UnityEngine.Light
+[Info][OPS.OBF][OnAnalyse_Component_Scenes] Process component Analyse MonoScript
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found mono script reference Main for Main Camera
+[Debug][OPS.OBF][OnAnalyse_Component_Scenes] Found mono script reference in serialized properties for Main Camera (1):
+  - Main
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found 2 Prefabs.
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found 39 Components in the prefabs.
+[Info][OPS.OBF][OnAnalyse_Component_Prefabs] Process component Analyse Unity Event Component
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in ConfirmBox of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in ConfirmBox of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in ConfirmBox of type UnityEngine.UI.Image
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmTitle of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmTitle of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmTitle of type UnityEngine.UI.Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in conmessage of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in conmessage of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in conmessage of type UnityEngine.UI.Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmBtn of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmBtn of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmBtn of type UnityEngine.UI.Image
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in confirmBtn of type UnityEngine.UI.Button
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.UI.Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in cancelBtn of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in cancelBtn of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in cancelBtn of type UnityEngine.UI.Image
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in cancelBtn of type UnityEngine.UI.Button
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.UI.Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in AlertBox of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in AlertBox of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in AlertBox of type UnityEngine.UI.Image
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in title of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in title of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in title of type UnityEngine.UI.Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in alertBtn of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in alertBtn of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in alertBtn of type UnityEngine.UI.Image
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in alertBtn of type UnityEngine.UI.Button
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in Text of type UnityEngine.UI.Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in message of type UnityEngine.RectTransform
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in message of type UnityEngine.CanvasRenderer
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Find unity event methods in message of type UnityEngine.UI.Text
+[Info][OPS.OBF][OnAnalyse_Component_Prefabs] Process component Analyse MonoScript
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Image for ConfirmBox
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for ConfirmBox (1):
+  - UnityEngine.UI.Image
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for confirmTitle
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for confirmTitle (1):
+  - UnityEngine.UI.Text
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for conmessage
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for conmessage (1):
+  - UnityEngine.UI.Text
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Image for confirmBtn
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for confirmBtn (1):
+  - UnityEngine.UI.Image
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Button for confirmBtn
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for confirmBtn (1):
+  - UnityEngine.UI.Button
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for Text (1):
+  - UnityEngine.UI.Text
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Image for cancelBtn
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for cancelBtn (1):
+  - UnityEngine.UI.Image
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Button for cancelBtn
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for cancelBtn (1):
+  - UnityEngine.UI.Button
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for Text (1):
+  - UnityEngine.UI.Text
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Image for AlertBox
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for AlertBox (1):
+  - UnityEngine.UI.Image
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for title
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for title (1):
+  - UnityEngine.UI.Text
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Image for alertBtn
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for alertBtn (1):
+  - UnityEngine.UI.Image
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Button for alertBtn
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for alertBtn (1):
+  - UnityEngine.UI.Button
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for Text
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for Text (1):
+  - UnityEngine.UI.Text
+
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference UnityEngine.UI.Text for message
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Found mono script reference in serialized properties for message (1):
+  - UnityEngine.UI.Text
+
+[Info][OPS.OBF][OnAnalyse_Component_Prefabs] Unload Project
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Unload Asset Cache
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Unload Pipeline
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Unload Pipeline Components
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Unload Obfuscator Settings
+[Debug][OPS.OBF][OnAnalyse_Component_Prefabs] Unload DataContainer
+[Info][OPS.OBF][OnAnalyse_Component_Prefabs] Finished PreBuild!
