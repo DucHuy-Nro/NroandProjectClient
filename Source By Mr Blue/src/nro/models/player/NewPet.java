@@ -77,7 +77,7 @@ public class NewPet extends Player {
     public void update() {
         super.update();
         if (this.isDie()) {
-            Service.gI().hsChar(this, nPoint.hpMax, nPoint.mpMax);
+            Service.gI().hsChar(this, (long) nPoint.hpMax, (long) nPoint.mpMax);
         }
         if (master != null && master.zone != null && (this.zone == null || this.zone != master.zone) && !MapService.gI().isMapOffline(master.zone.map.mapId)) {
             joinMapMaster();

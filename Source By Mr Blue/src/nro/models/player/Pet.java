@@ -323,7 +323,7 @@ public class Pet extends Player {
 
                 if (isDie()) {
                     if (System.currentTimeMillis() - lastTimeDie > 120000) {
-                        Service.gI().hsChar(this, nPoint.hpMax, nPoint.mpMax);
+                        Service.gI().hsChar(this, (long) nPoint.hpMax, (long) nPoint.mpMax);
                     } else {
                         return;
                     }

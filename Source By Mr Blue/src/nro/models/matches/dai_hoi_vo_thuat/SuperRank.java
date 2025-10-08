@@ -235,7 +235,7 @@ public final class SuperRank implements Runnable {
         }
         if (player != null && player.zone != null && player.zone.equals(zone)) {
             if (player.isDie()) {
-                Service.gI().hsChar(player, player.nPoint.hpMax, player.nPoint.mpMax);
+                Service.gI().hsChar(player, (long) player.nPoint.hpMax, (long) player.nPoint.mpMax);
             }
             PlayerService.gI().changeAndSendTypePK(player, ConstPlayer.NON_PK);
             Service.gI().sendPlayerVS(player, null, (byte) 0);

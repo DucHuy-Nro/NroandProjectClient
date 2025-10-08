@@ -826,7 +826,7 @@ public class SkillService {
                             AchievementService.gI().checkDoneTask(pl, ConstAchievement.CHAM_SOC_DAC_BIET);
                             Service.gI().chat(pl, "Cảm ơn " + player.name + " đã hồi sinh mình");
                             Service.gI().Send_Info_NV(player);
-                            Service.gI().hsChar(pl, pl.nPoint.getHP(), pl.nPoint.getMP());
+                            Service.gI().hsChar(pl, (long) pl.nPoint.getHP(), (long) pl.nPoint.getMP());
                             PlayerService.gI().sendInfoHpMpMoney(pl);
                             PlayerService.gI().sendInfoHpMp(player);
                         } else {

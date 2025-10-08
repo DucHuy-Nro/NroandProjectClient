@@ -217,13 +217,13 @@ public class ChangeMapService {
     public void changeMapBySpaceShip(Player pl, int mapId, int zone, int x) {
         if (!pl.isBoss) {
             changeMap(pl, null, mapId, zone, x, 5, AUTO_SPACE_SHIP);
-            if (pl.isDie()) {
-                if (pl.haveTennisSpaceShip) {
-                    Service.gI().hsChar(pl, pl.nPoint.hpMax, pl.nPoint.mpMax);
-                } else {
-                    Service.gI().hsChar(pl, 1, 1);
-                }
+        if (pl.isDie()) {
+            if (pl.haveTennisSpaceShip) {
+                Service.gI().hsChar(pl, (long) pl.nPoint.hpMax, (long) pl.nPoint.mpMax);
             } else {
+                Service.gI().hsChar(pl, 1L, 1L);
+            }
+        } else {
                 if (pl.haveTennisSpaceShip) {
                     pl.nPoint.setFullHpMp();
                     PlayerService.gI().sendInfoHpMp(pl);
@@ -235,9 +235,9 @@ public class ChangeMapService {
     public void changeMapBySpaceShip(Player pl, Zone zoneJoin, int x) {
         if (pl.isDie()) {
             if (pl.haveTennisSpaceShip) {
-                Service.gI().hsChar(pl, pl.nPoint.hpMax, pl.nPoint.mpMax);
+                Service.gI().hsChar(pl, (long) pl.nPoint.hpMax, (long) pl.nPoint.mpMax);
             } else {
-                Service.gI().hsChar(pl, 1, 1);
+                Service.gI().hsChar(pl, 1L, 1L);
             }
         } else {
             if (pl.haveTennisSpaceShip) {

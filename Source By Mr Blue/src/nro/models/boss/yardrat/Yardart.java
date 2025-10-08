@@ -240,7 +240,7 @@ public abstract class Yardart extends Boss {
             if (this.nPoint.hp > damage) {
                 this.nPoint.subHP(damage);
             } else {
-                Service.gI().hsChar(this, this.nPoint.hpMax, this.nPoint.mpMax);
+                Service.gI().hsChar(this, (long) this.nPoint.hpMax, (long) this.nPoint.mpMax);
                 this.nPoint.hp = 1;
                 if (Util.isTrue(1, 10)) {
                     Service.gI().Send_Info_NV(this);

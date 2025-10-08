@@ -129,7 +129,7 @@ public class SuperDivineWaterService {
                         int y = 336;
                         PlayerService.gI().playerMove(mc, x, y);
                         if (player.isDie()) {
-                            Service.gI().hsChar(player, player.nPoint.hpMax, player.nPoint.hpMax);
+                            Service.gI().hsChar(player, (long) player.nPoint.hpMax, (long) player.nPoint.hpMax);
                         }
                         NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_SIEU_THAN_THUY, 2119, "Để tôi đưa cậu về", "Đồng ý", "Từ chối");
                         player.lastTimeUpdateSTT = System.currentTimeMillis();

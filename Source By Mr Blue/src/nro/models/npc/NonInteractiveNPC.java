@@ -47,7 +47,7 @@ public class NonInteractiveNPC extends Player {
     @Override
     public void update() {
         if (this.isDie()) {
-            Service.gI().hsChar(this, nPoint.hpMax, nPoint.mpMax);
+            Service.gI().hsChar(this, (long) nPoint.hpMax, (long) nPoint.mpMax);
         }
         if (this.id == BossID.KHI_BUBBLES) {
             move();
