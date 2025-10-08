@@ -76,7 +76,7 @@ public class GauTuongCuop extends Mob {
                     for (Player pl : targets) {
                         int dame = pl.injured(null, this.getDameAttack(), false, true);
                         msg.writer().writeInt((int) pl.id);
-                        msg.writer().writeInt(dame);
+                        msg.writer().writeLong(dame);
                         dir = pl.location.x < this.location.x ? -1 : 1;
                     }
                     msg.writer().writeByte(dir);

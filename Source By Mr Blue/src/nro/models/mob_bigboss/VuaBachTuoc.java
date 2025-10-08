@@ -44,7 +44,7 @@ public class VuaBachTuoc extends BigBoss {
                     if (action == 3 || action == 4) {
                         msg.writer().writeByte(1); // SIZE PLAYER ATTACK
                         msg.writer().writeInt((int) player.id); // PLAYER ID
-                        msg.writer().writeInt(dame); // DAME
+                        msg.writer().writeLong(dame); // DAME
                     } else {
                         msg.writer().writeShort(this.location.x);
                     }

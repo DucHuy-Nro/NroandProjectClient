@@ -71,7 +71,7 @@ public class NguaChinLmao extends BigBoss {
                         for (Player pl : players) {
                             int dame = pl.injured(null, this.point.getDameAttack(), false, true);
                             msg.writer().writeInt((int) pl.id); // id player
-                            msg.writer().writeInt(dame); // dame
+                            msg.writer().writeLong(dame); // dame
                             dir = pl.location.x < this.location.x ? -1 : 1;
                         }
                         msg.writer().writeByte(dir); // dir
