@@ -321,7 +321,7 @@ public class PlayerService {
                 }
                 if (canHs) {
                     Service.gI().sendMoney(player);
-                    Service.gI().hsChar(player, player.nPoint.hpMax, player.nPoint.mpMax);
+                    Service.gI().hsChar(player, (long) player.nPoint.hpMax, (long) player.nPoint.mpMax);
                     player.powerReduced = false;
                 }
             }
@@ -352,7 +352,7 @@ public class PlayerService {
             }
             if (canHs) {
                 Service.gI().sendMoney(player);
-                Service.gI().hsChar(player, player.nPoint.hpMax, player.nPoint.mpMax);
+                Service.gI().hsChar(player, (long) player.nPoint.hpMax, (long) player.nPoint.mpMax);
             }
         }
     }

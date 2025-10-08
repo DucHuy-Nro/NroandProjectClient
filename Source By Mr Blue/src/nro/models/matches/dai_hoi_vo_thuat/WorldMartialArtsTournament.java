@@ -242,7 +242,7 @@ public final class WorldMartialArtsTournament implements Runnable {
                 Zone pl1z = ChangeMapService.gI().getMapCanJoin(plLose, plLose.gender + 21);
                 ChangeMapService.gI().changeMap(plLose, pl1z, Util.nextInt(200, 500), 1);
                 if (plLose.isDie()) {
-                    Service.gI().hsChar(plLose, plLose.nPoint.hpMax, plLose.nPoint.mpMax);
+                    Service.gI().hsChar(plLose, (long) plLose.nPoint.hpMax, (long) plLose.nPoint.mpMax);
                 }
             }
             Service.gI().setPos(npc, npc.location.x, 112);

@@ -179,7 +179,7 @@ public class BuiBui2 extends Boss {
             this.timeChat = Util.nextInt(10000, 15000);
         }
         if (Util.canDoWithTime(lastTimeAfk, 60000)) {
-            Service.gI().hsChar(this, this.nPoint.hpMax, this.nPoint.mpMax);
+            Service.gI().hsChar(this, (long) this.nPoint.hpMax, (long) this.nPoint.mpMax);
             this.changeStatus(BossStatus.CHAT_S);
 //            this.changeToTypePK();
         }
