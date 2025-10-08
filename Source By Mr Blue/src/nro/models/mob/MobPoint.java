@@ -7,7 +7,7 @@ public class MobPoint {
     public final Mob mob;
     public int hp;
     public int maxHp;
-    public int dame;
+    public long dame;  // Đổi sang long để support damage cao
 
     public MobPoint(Mob mob) {
         this.mob = mob;
@@ -33,8 +33,8 @@ public class MobPoint {
         }
     }
 
-    public int getDameAttack() {
-        return this.dame != 0 ? this.dame + Util.nextInt(-(this.dame / 100), (this.dame / 100))
+    public long getDameAttack() {
+        return this.dame != 0 ? this.dame + Util.nextInt(-(int)(this.dame / 100), (int)(this.dame / 100))
                 : this.getHpFull() * Util.nextInt(mob.pDame - 1, mob.pDame + 1) / 100
                 + Util.nextInt(-(mob.level * 10), mob.level * 10);
     }

@@ -54,7 +54,7 @@ public class NPoint {
 
     private Intrinsic intrinsic;
     private int percentDameIntrinsic;
-    public int dameAfter;
+    public long dameAfter;  // Đổi sang long để damage vượt 2 tỷ
 
     /*-----------------------Chỉ số cơ bản------------------------------------*/
     public byte numAttack;
@@ -66,7 +66,7 @@ public class NPoint {
 
     public int hp, hpMax, hpg;
     public int mp, mpMax, mpg;
-    public int dame, dameg;
+    public long dame, dameg;  // Đổi sang long để damage vượt 2 tỷ
     public int def, defg;
     public int crit, critg, critdragon;
     public int GiamST;
@@ -80,7 +80,8 @@ public class NPoint {
     /**
      * Chỉ số cộng thêm
      */
-    public int hpAdd, mpAdd, dameAdd, defAdd, critAdd, hpHoiAdd, mpHoiAdd;
+    public int hpAdd, mpAdd, defAdd, critAdd, hpHoiAdd, mpHoiAdd;
+    public long dameAdd;  // Đổi sang long để damage vượt 2 tỷ
 
     /**
      * //+#% sức đánh chí mạng
@@ -1207,8 +1208,9 @@ public class NPoint {
             dame /= 2;
         }
 
-        if (dame > 2_147_483_647) {
-            dame = 2_147_483_647;
+        // Giới hạn damage tối đa: 999 nghìn tỷ (đủ cho game Trung Quốc)
+        if (dame > 999_000_000_000_000L) {
+            dame = 999_000_000_000_000L;
         }
 
         if (this.player.setClothes.ThanHuyDietChampa == 2) {
@@ -1379,9 +1381,9 @@ public class NPoint {
         }
     }
 
-    public int getDameAttack(boolean isAttackMob) {
+    public long getDameAttack(boolean isAttackMob) {
         setIsCrit();
-        int dameAttack = this.dame;
+        long dameAttack = this.dame;
         intrinsic = this.player.playerIntrinsic.intrinsic;
         percentDameIntrinsic = 0;
         int percentDameSkill = 0;
@@ -1476,12 +1478,12 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
             case Skill.DICH_CHUYEN_TUC_THOI:
                 isCrit = true;
                 isCritTele = true;
-                dameAttack = Util.nextInt((int) (int) Math.min(2_147_483_647L, (dameAttack - (dameAttack / 100 * 5))),
-                        (int) (int) Math.min(2_147_483_647L, (dameAttack + (dameAttack / 100 * 5))));
+                dameAttack = Util.nextInt((int) (dameAttack - (dameAttack / 100 * 5)),
+                        (int) (dameAttack + (dameAttack / 100 * 5)));
                 break;
             case Skill.MAKANKOSAPPO:
                 percentDameSkill = skillSelect.damage;
-                int dameSkill = (int) Math.min(2_147_483_647L, (long) this.mpMax * percentDameSkill / 100);
+                long dameSkill = (long) this.mpMax * percentDameSkill / 100;
                 if (this.player.setClothes.picolo == 5) {
                     dameSkill *= 3 / 2;
                 }
@@ -1510,18 +1512,14 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
                 }
 
                 dameqckk = dameqckk + (Util.nextInt(-5, 5) * dameqckk / 100);
-                if (dameqckk > 2_147_483_647) {
-                    dameqckk = 2_147_483_647;
-                }
-                return (int) dameqckk;
+                // Không giới hạn damage nữa, để lên cao
+                return dameqckk;
             case Skill.DE_TRUNG:
                 if (player.setClothes.pikkoroDaimao == 5) {
                     dameAttack *= 4;
                 }
-                if (dameAttack > 2_147_483_647) {
-                    dameAttack = 2_147_483_647;
-                }
-                return (int) dameAttack;
+                // Không giới hạn damage nữa
+                return dameAttack;
         }
 
         if (intrinsic.id == 18 && this.player.effectSkill.isMonkey) {
@@ -1574,11 +1572,11 @@ case Skill.MA_PHONG_BA:             // Ma Phong Ba (Namec)
             player.effectSkin.lastTimeXChuong = System.currentTimeMillis();
         }
 
-        if (dameAttack
-                > 2_147_483_647) {
-            dameAttack = 2_147_483_647;
+        // Giới hạn damage tối đa 999 nghìn tỷ
+        if (dameAttack > 999_000_000_000_000L) {
+            dameAttack = 999_000_000_000_000L;
         }
-        return (int) dameAttack;
+        return dameAttack;
     }
 
     public int getCurrPercentHP() {

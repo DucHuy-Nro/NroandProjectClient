@@ -189,9 +189,9 @@ public class Hirudegarn extends BigBoss {
                     switch (action) {
                         case 1:
                             msg.writer().writeByte(1);
-                            int dame = player.injured(null, this.point.getDameAttack(), false, true);
+                            long dame = player.injured(null, this.point.getDameAttack(), false, true);
                             msg.writer().writeInt((int) player.id);
-                            msg.writer().writeInt(dame);
+                            msg.writer().writeLong(dame);  // Dùng long
                             break;
                         case 3:
                             this.location.x = (short) player.location.x;

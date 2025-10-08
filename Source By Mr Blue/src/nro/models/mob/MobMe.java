@@ -18,8 +18,8 @@ public final class MobMe extends Mob {
         this.id = (int) player.id;
         int level = player.playerSkill.getSkillbyId(12).point;
         this.tempId = SkillUtil.getTempMobMe(level);
-        this.point.maxHp = (int) Math.min(SkillUtil.getHPMobMe(player.nPoint.hpMax, level), 2_147_483_647);
-        this.point.dame = (int) Math.min(SkillUtil.getHPMobMe(player.nPoint.getDameAttack(false), level), 2_147_483_647);
+        this.point.maxHp = (int) Math.min(SkillUtil.getHPMobMe(player.nPoint.hpMax, level), Integer.MAX_VALUE);
+        this.point.dame = SkillUtil.getHPMobMe(player.nPoint.getDameAttack(false), level);  // Không giới hạn dame
         this.point.hp = this.point.maxHp;
         this.zone = player.zone;
         this.lastTimeSpawn = System.currentTimeMillis();
@@ -39,14 +39,14 @@ public final class MobMe extends Mob {
         Message msg;
         try {
             if (pl != null) {
-                int dame = !miss ? this.point.dame : 0;
+                long dame = !miss ? this.point.dame : 0;
                 if ((pl.nPoint.hp > dame && pl.nPoint.hp > pl.nPoint.hpMax * 0.05) || this.player.setClothes.pikkoroDaimao == 5) {
-                    int dameHit = pl.injured(this.player, dame, true, true);
+                    long dameHit = pl.injured(this.player, dame, true, true);
                     msg = new Message(-95);
                     msg.writer().writeByte(2);
                     msg.writer().writeInt(this.id);
                     msg.writer().writeInt((int) pl.id);
-                    msg.writer().writeInt(dameHit);
+                    msg.writer().writeLong(dameHit);  // Dùng long cho damage cao
                     msg.writer().writeInt(pl.nPoint.hp);
                     Service.gI().sendMessAllPlayerInMap(this.player, msg);
                     msg.cleanup();
