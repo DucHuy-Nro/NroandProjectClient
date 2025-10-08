@@ -794,7 +794,7 @@ public class Service {
                 msg.writer().writeByte(player.nPoint.crit);
                 msg.writer().writeLong(player.nPoint.tiemNang);
                 msg.writer().writeShort(100);
-                msg.writer().writeShort(player.nPoint.defg);
+                msg.writer().writeShort((short) player.nPoint.defg);
                 msg.writer().writeByte(player.nPoint.critg);
                 msg.writer().writeInt(player.nPoint.tlGiap);
                 msg.writer().writeInt(player.nPoint.tlSDCM);
@@ -1116,7 +1116,7 @@ public class Service {
         return 19;
     }
 
-    public void hsChar(Player pl, int hp, int mp) {
+    public void hsChar(Player pl, long hp, long mp) {
         Message msg;
         try {
             if (pl.isPl() && pl.effectSkill != null && pl.effectSkill.isBodyChangeTechnique) {
@@ -1627,7 +1627,7 @@ public class Service {
                 msg.writer().writeShort(pl.pet.nPoint.stamina); //stamina
                 msg.writer().writeShort(pl.pet.nPoint.maxStamina); //stamina full
                 msg.writer().writeByte(pl.pet.nPoint.crit); //crit
-                msg.writer().writeShort(pl.pet.nPoint.def); //def               
+                msg.writer().writeShort((short) pl.pet.nPoint.def); //def               
                 int sizeSkill = pl.pet.playerSkill.skills.size();
                 byte countSkill = 4;
                 if (pl.pet.typePet == 2 || pl.pet.typePet == 3 || pl.pet.typePet == 4) {
@@ -2579,8 +2579,8 @@ public class Service {
             msg.writer().writeByte(pl.gender);
             msg.writer().writeShort(plHead);
             msg.writer().writeUTF(plName);
-            msg.writer().writeInt(pl.nPoint.hp);
-            msg.writer().writeInt(pl.nPoint.hpMax);
+            msg.writer().writeLong(pl.nPoint.hp);
+            msg.writer().writeLong(pl.nPoint.hpMax);
             msg.writer().writeShort(plBody);
             msg.writer().writeShort(plLeg);
             int flagbag = pl.getFlagBag();

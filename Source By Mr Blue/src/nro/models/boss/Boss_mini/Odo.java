@@ -86,14 +86,14 @@ public class Odo extends Boss {
                     Player pl = playersMap.get(i);
                     if (pl != null && pl.nPoint != null && !this.equals(pl) && !pl.isBoss && !pl.isDie()
                             && Util.getDistance(this, pl) <= 200) {
-                        int subHp = (int) ((long) pl.nPoint.hpMax * param / 100);
+                        long subHp = (long) pl.nPoint.hpMax * param / 100;
                         if (subHp >= pl.nPoint.hp) {
                             subHp = pl.nPoint.hp - 1;
                         }
                         this.chat("Bùm Bùm");
                         Service.gI().chat(pl, textOdo[Util.nextInt(0, textOdo.length - 1)]);
                         PlayerService.gI().sendInfoHpMpMoney(pl);
-                        pl.injured(null, subHp, true, false);
+                        pl.injured(null, (int) subHp, true, false);
                     }
                 }
                 this.lastTimeOdo = System.currentTimeMillis(); // Cập nhật thời gian của Odo
@@ -107,8 +107,8 @@ public class Odo extends Boss {
         try {
             if (Util.canDoWithTime(lastTimeHpRegen, 30000)) {
                 int regenPercentage = Util.nextInt(10, 20);
-                int regenAmount = (this.nPoint.hpMax * regenPercentage / 100);
-                PlayerService.gI().hoiPhuc(this, regenAmount, 0);
+                long regenAmount = (long) this.nPoint.hpMax * regenPercentage / 100;
+                PlayerService.gI().hoiPhuc(this, (int) regenAmount, 0);
                 this.chat("Mùi Của Các Ngươi Thơm Quá!! HAHA");
                 this.lastTimeHpRegen = System.currentTimeMillis();
             }
