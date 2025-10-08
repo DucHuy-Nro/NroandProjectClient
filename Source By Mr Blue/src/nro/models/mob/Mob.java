@@ -443,7 +443,7 @@ public class Mob {
             try {
                 msg = new Message(-11);
                 msg.writer().writeByte(this.id);
-                msg.writer().writeInt(dame);
+                msg.writer().writeLong(dame);
                 player.sendMessage(msg);
                 msg.cleanup();
             } catch (Exception e) {
@@ -576,7 +576,7 @@ public class Mob {
         try {
             msg = new Message(-12);
             msg.writer().writeByte(this.id);
-            msg.writer().writeInt(dameHit);
+            msg.writer().writeLong(dameHit);
             msg.writer().writeBoolean(plKill.nPoint.isCrit);
             List<ItemMap> items = mobReward(plKill, this.dropItemTask(plKill), msg);
             Service.gI().sendMessAllPlayerInMap(this.zone, msg);
@@ -639,7 +639,7 @@ public class Mob {
             msg = new Message(-9);
             msg.writer().writeByte(this.id);
             msg.writer().writeInt(this.point.gethp());
-            msg.writer().writeInt(dameHit);
+            msg.writer().writeLong(dameHit);
             msg.writer().writeBoolean(crit); // chí mạng
             msg.writer().writeInt(-1);
             Service.gI().sendMessAllPlayerInMap(this.zone, msg);

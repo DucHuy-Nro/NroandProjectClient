@@ -46,7 +46,7 @@ public final class MobMe extends Mob {
                     msg.writer().writeByte(2);
                     msg.writer().writeInt(this.id);
                     msg.writer().writeInt((int) pl.id);
-                    msg.writer().writeInt(dameHit);
+                    msg.writer().writeLong(dameHit);
                     msg.writer().writeInt(pl.nPoint.hp);
                     Service.gI().sendMessAllPlayerInMap(this.player, msg);
                     msg.cleanup();
@@ -62,7 +62,7 @@ public final class MobMe extends Mob {
                     msg.writer().writeInt((int) mob.id);
                     mob.point.sethp(mob.point.gethp() - this.point.dame);
                     msg.writer().writeInt(mob.point.gethp());
-                    msg.writer().writeInt(this.point.dame);
+                    msg.writer().writeLong(this.point.dame);
                     Service.gI().sendMessAllPlayerInMap(this.player, msg);
                     msg.cleanup();
                     Service.gI().addSMTN(player, (byte) 2, tnsm, true);
@@ -136,7 +136,7 @@ public final class MobMe extends Mob {
             msg.writer().writeInt((int) plAtt.id);
             msg.writer().writeByte(plAtt.playerSkill.skillSelect.template.id); // id skill
             msg.writer().writeInt(id); //mob id
-            msg.writer().writeInt((int) damage);
+            msg.writer().writeLong(damage);
             msg.writer().writeInt(point.hp);
             Service.gI().sendMessAllPlayerInMap(this.player, msg);
             msg.cleanup();

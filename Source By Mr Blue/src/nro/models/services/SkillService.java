@@ -945,7 +945,7 @@ public class SkillService {
             msg.writer().writeInt((int) plInjure.id); //id ăn pem
             msg.writer().writeByte(1); //read continue
             msg.writer().writeByte(0); //type skill
-            msg.writer().writeInt(dameHit); //dame ăn
+            msg.writer().writeLong(dameHit); //dame ăn
             msg.writer().writeBoolean(plInjure.isDie()); //is die
             msg.writer().writeBoolean(plAtt.nPoint.isCrit); //crit
             Service.gI().sendMessAllPlayerInMap(plAtt, msg);

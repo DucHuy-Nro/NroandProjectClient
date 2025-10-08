@@ -1116,7 +1116,7 @@ public class Service {
         return 19;
     }
 
-    public void hsChar(Player pl, int hp, int mp) {
+    public void hsChar(Player pl, long hp, long mp) {
         Message msg;
         try {
             if (pl.isPl() && pl.effectSkill != null && pl.effectSkill.isBodyChangeTechnique) {
@@ -1134,8 +1134,8 @@ public class Service {
 
             msg = messageSubCommand((byte) 15);
             msg.writer().writeInt((int) pl.id);
-            msg.writer().writeInt(hp);
-            msg.writer().writeInt(mp);
+            msg.writer().writeInt((int) hp);
+            msg.writer().writeInt((int) mp);
             msg.writer().writeShort(pl.location.x);
             msg.writer().writeShort(pl.location.y);
             sendMessAllPlayerInMap(pl, msg);
@@ -2306,7 +2306,7 @@ public class Service {
             if (action != 6 && action != 7) {
                 msg.writer().writeByte(size); // SIZE PLAYER ATTACK
                 msg.writer().writeInt(id); // PLAYER ID
-                msg.writer().writeInt(dame); // DAME
+                msg.writer().writeLong(dame); // DAME
             }
             sendMessAllPlayerInMap(zone, msg);
         } catch (Exception e) {
@@ -2459,7 +2459,7 @@ public class Service {
             for (Player plM : player.zone.getNotBosses()) {
                 msg.writer().writeInt((int) plM.id);
                 int damage = plM.injured(player, player.nPoint.dame + plM.nPoint.hp / 10, true, false);
-                msg.writer().writeInt(damage);
+                msg.writer().writeLong(damage);
             }
             sendMessAllPlayerInMap(player, msg);
             msg.cleanup();
