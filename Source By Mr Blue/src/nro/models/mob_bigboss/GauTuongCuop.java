@@ -74,9 +74,9 @@ public class GauTuongCuop extends Mob {
                     msg.writer().writeByte(targets.size());
                     int dir = 0;
                     for (Player pl : targets) {
-                        int dame = pl.injured(null, this.getDameAttack(), false, true);
+                        long dame = pl.injured(null, this.getDameAttack(), false, true);
                         msg.writer().writeInt((int) pl.id);
-                        msg.writer().writeInt(dame);
+                        msg.writer().writeLong(dame);  // Dùng long
                         dir = pl.location.x < this.location.x ? -1 : 1;
                     }
                     msg.writer().writeByte(dir);

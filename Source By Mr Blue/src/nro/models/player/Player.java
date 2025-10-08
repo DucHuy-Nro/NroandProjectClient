@@ -360,7 +360,7 @@ public class Player implements Runnable {
     public int wearingBackItemId = 78;
     public long lastClickTimeOption7;
     public transient List<String> currentNpcMenuOptions;
-    public int lastDamage;
+    public long lastDamage;  // Đổi sang long để lưu damage cao
     public long lastCaptchaTime = 0;
     public boolean requireCaptcha = false;
     public String captchaAnswer = "";
@@ -1055,7 +1055,7 @@ public class Player implements Runnable {
         }
     }
 
-    public synchronized int injured(Player plAtt, long damage, boolean piercing, boolean isMobAttack) {
+    public synchronized long injured(Player plAtt, long damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
             if (plAtt != null && !plAtt.equals(this)) {
                 setTemporaryEnemies(plAtt);
@@ -1182,7 +1182,7 @@ public class Player implements Runnable {
 
             if (!piercing && effectSkill.isShielding && !isMobAttack) {
                 if (this.idMark != null) {
-                    this.idMark.setDamePST((int) Math.min(damage, 2_147_483_647L));
+                    this.idMark.setDamePST((int) Math.min(damage, Integer.MAX_VALUE));
                 }
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
@@ -1192,7 +1192,7 @@ public class Player implements Runnable {
                     damage = 10;
                 }
             }
-            damage = Math.min(damage, 2_147_483_647);
+            // Bỏ giới hạn damage để có thể đạt 5-50 tỷ
             if (isMobAttack && this.charms.tdBatTu > System.currentTimeMillis() && damage >= this.nPoint.hp) {
                 damage = this.nPoint.hp - 1;
             }
@@ -1225,7 +1225,7 @@ public class Player implements Runnable {
                 }
             }
 
-            return (int) damage;
+            return damage;  // Trả về long để support damage cao
         } else {
             return 0;
         }

@@ -179,14 +179,14 @@ public class DestronGas implements Runnable {
                         ((i == 33) && zone.map.mapId == 152)) { // Quái 76 xuất hiện thứ 34 ở Map 152 (Vùng đất băng giá)
 
                     mob.lvMob = 1;
-                    mob.point.dame = (int) Math.min((long) level * 31 * 5 * mob.tempId * 10, 2_147_483_647);
-                    mob.point.maxHp = (int) Math.min((long) level * 3 * 6700 * mob.tempId * 10, 2_147_483_647);
+                    mob.point.dame = (long) level * 31 * 5 * mob.tempId * 10;  // Không giới hạn dame
+                    mob.point.maxHp = (int) Math.min((long) level * 3 * 6700 * mob.tempId * 10, Integer.MAX_VALUE);
                     mob.hoiSinh();
                     mob.hoiSinhMobPhoBan();
                 } else {
                     mob.lvMob = mob.tempId == 76 ? 1 : 0;
-                    mob.point.dame = (int) Math.min((long) level * 31 * 5 * mob.tempId, 2_147_483_647);
-                    mob.point.maxHp = (int) Math.min((long) level * 5 * 45 * mob.tempId, 2_147_483_647);
+                    mob.point.dame = (long) level * 31 * 5 * mob.tempId;  // Không giới hạn dame
+                    mob.point.maxHp = (int) Math.min((long) level * 5 * 45 * mob.tempId, Integer.MAX_VALUE);
                     mob.hoiSinh();
                     mob.hoiSinhMobPhoBan();
                 }

@@ -25,8 +25,8 @@ public class VuaBachTuoc extends BigBoss {
         Player player = getPlayerCanAttack();
         if (!isDie() && !effectSkill.isHaveEffectSkill() && Util.canDoWithTime(lastBigBossAttackTime, 1000)) {
             if (player != null && player.location.x > 440 && player.location.x < 950) {
-                int dameMob = this.point.getDameAttack();
-                int dame = player.injured(null, dameMob, false, true);
+                long dameMob = this.point.getDameAttack();
+                long dame = player.injured(null, dameMob, false, true);
                 action = 3;
                 int dis = Util.getDistance(player, this);
                 if (dis <= 100) {

@@ -169,22 +169,22 @@ public class BanDoKhoBau implements Runnable {
                     Mob mob = mobs.get(i);
                     if (((i == 5 || i == 10) && zone.map.mapId == 135) || (i == 5 && zone.map.mapId == 136) || (i == 5 && zone.map.mapId == 137)) {
                         mob.lvMob = 1;
-                        mob.point.dame = (int) Math.min((long) level * 600 * mob.tempId * 10, 2_147_483_647);
-                        mob.point.maxHp = (int) Math.min((long) level * 469799 * mob.tempId, 2_147_483_647);
+                        mob.point.dame = (long) level * 600 * mob.tempId * 10;  // Không giới hạn dame
+                        mob.point.maxHp = (int) Math.min((long) level * 469799 * mob.tempId, Integer.MAX_VALUE);
                         mob.hoiSinh();
                         mob.hoiSinhMobPhoBan();
                     } else {
                         mob.lvMob = 0;
-                        mob.point.dame = (int) Math.min((long) level * 200 * mob.tempId, 2_147_483_647);
-                        mob.point.maxHp = (int) Math.min((long) level * 469799 * mob.tempId, 2_147_483_647);
+                        mob.point.dame = (long) level * 200 * mob.tempId;  // Không giới hạn dame
+                        mob.point.maxHp = (int) Math.min((long) level * 469799 * mob.tempId, Integer.MAX_VALUE);
                         mob.hoiSinh();
                         mob.hoiSinhMobPhoBan();
                     }
                 }
             } else {
                 for (Mob mob : zone.mobs) {
-                    mob.point.dame = (int) Math.min((long) level * 31 * 50 * mob.tempId, 2_147_483_647);
-                    mob.point.maxHp = (int) Math.min((long) level * 310799 * 50 * mob.tempId, 2_147_483_647);
+                    mob.point.dame = (long) level * 31 * 50 * mob.tempId;  // Không giới hạn dame
+                    mob.point.maxHp = (int) Math.min((long) level * 310799 * 50 * mob.tempId, Integer.MAX_VALUE);
                     mob.hoiSinh();
                     mob.hoiSinhMobPhoBan();
                 }

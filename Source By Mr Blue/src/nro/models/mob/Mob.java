@@ -178,9 +178,7 @@ public class Mob {
                 lastTimeAttackPlayer = System.currentTimeMillis();
             }
 
-            if (damage > 2_147_483_647) {
-                damage = 2_147_483_647;
-            }
+            // Bỏ giới hạn damage để hỗ trợ damage cao
 
             this.point.hp -= damage;
             addTemporaryEnemies(plAtt);
@@ -189,7 +187,7 @@ public class Mob {
                 this.setDie();
                 this.temporaryEnemies.clear();
                 if (plAtt != null) {
-                    this.sendMobDieAffterAttacked(plAtt, (int) damage);
+                    this.sendMobDieAffterAttacked(plAtt, damage);
                     TaskService.gI().checkDoneTaskKillMob(plAtt, this);
                     TaskService.gI().checkDoneSideTaskKillMob(plAtt, this);
                     TaskService.gI().checkDoneClanTaskKillMob(plAtt, this);
@@ -202,7 +200,7 @@ public class Mob {
                     this.zone.isbulon2Alive = false;
                 }
             } else {
-                this.sendMobStillAliveAffterAttacked((int) damage, plAtt != null ? (plAtt.nPoint != null && plAtt.nPoint.isCrit) : false);
+                this.sendMobStillAliveAffterAttacked(damage, plAtt != null ? (plAtt.nPoint != null && plAtt.nPoint.isCrit) : false);
             }
             if (plAtt != null) {
                 if (plAtt.isPl() && plAtt.satellite != null && plAtt.satellite.isDefend) {
@@ -403,7 +401,7 @@ public class Mob {
             return;
         }
 
-        int dameMob = this.point.getDameAttack();
+        long dameMob = this.point.getDameAttack();
 
         if (player.charms != null && player.charms.tdDaTrau > System.currentTimeMillis()) {
             dameMob /= 2;
@@ -431,19 +429,19 @@ public class Mob {
         if (this.lvMob > 0 && player.charms != null && player.charms.tdOaiHung > System.currentTimeMillis()) {
         }
 
-        int dame = player.injured(null, dameMob, false, true);
+        long dame = player.injured(null, dameMob, false, true);
         this.sendMobAttackMe(player, dame);
         this.sendMobAttackPlayer(player);
         this.phanSatThuong(player, dame);
     }
 
-    private void sendMobAttackMe(Player player, int dame) {
+    private void sendMobAttackMe(Player player, long dame) {
         if (!player.isPet && !player.isBot && !player.isNewPet) {
             Message msg;
             try {
                 msg = new Message(-11);
                 msg.writer().writeByte(this.id);
-                msg.writer().writeInt(dame);
+                msg.writer().writeLong(dame);  // Dùng long
                 player.sendMessage(msg);
                 msg.cleanup();
             } catch (Exception e) {
@@ -571,12 +569,12 @@ public class Mob {
         }
     }
 
-    private void sendMobDieAffterAttacked(Player plKill, int dameHit) {
+    private void sendMobDieAffterAttacked(Player plKill, long dameHit) {
         Message msg;
         try {
             msg = new Message(-12);
             msg.writer().writeByte(this.id);
-            msg.writer().writeInt(dameHit);
+            msg.writer().writeLong(dameHit);  // Dùng long để support damage cao
             msg.writer().writeBoolean(plKill.nPoint.isCrit);
             List<ItemMap> items = mobReward(plKill, this.dropItemTask(plKill), msg);
             Service.gI().sendMessAllPlayerInMap(this.zone, msg);
@@ -633,13 +631,13 @@ public class Mob {
         return itemReward;
     }
 
-    private void sendMobStillAliveAffterAttacked(int dameHit, boolean crit) {
+    private void sendMobStillAliveAffterAttacked(long dameHit, boolean crit) {
         Message msg;
         try {
             msg = new Message(-9);
             msg.writer().writeByte(this.id);
             msg.writer().writeInt(this.point.gethp());
-            msg.writer().writeInt(dameHit);
+            msg.writer().writeLong(dameHit);  // Dùng long để support damage cao
             msg.writer().writeBoolean(crit); // chí mạng
             msg.writer().writeInt(-1);
             Service.gI().sendMessAllPlayerInMap(this.zone, msg);

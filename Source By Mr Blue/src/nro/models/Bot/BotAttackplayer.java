@@ -152,7 +152,7 @@ public class BotAttackplayer extends Bot {
         }
 
         boolean isMiss = false;
-        int realDame = targetPlayer.injured(this, isMiss ? 0 : damage, false, false);
+        long realDame = targetPlayer.injured(this, isMiss ? 0 : damage, false, false);
 
         Skill skill = playerSkill.skillSelect;
 
@@ -164,7 +164,7 @@ public class BotAttackplayer extends Bot {
             msg.writer().writeInt((int) targetPlayer.id);
             msg.writer().writeByte(1);
             msg.writer().writeByte(0);
-            msg.writer().writeInt(realDame);
+            msg.writer().writeLong(realDame);  // Dùng long cho damage cao
             msg.writer().writeBoolean(targetPlayer.isDie());
             msg.writer().writeBoolean(nPoint.isCrit);
             Service.gI().sendMessAllPlayerInMap(this, msg);

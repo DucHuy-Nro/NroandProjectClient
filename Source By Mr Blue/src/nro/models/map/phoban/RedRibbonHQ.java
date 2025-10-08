@@ -130,8 +130,8 @@ public class RedRibbonHQ implements Runnable {
         for (Zone zone : this.zones) {
             for (Mob mob : zone.mobs) {
                 long mobTempId = mob.tempId;
-                mob.point.dame = (int) ((mobTempId != 0) ? Math.min(totalHp / mobTempId, 2_147_483_647L) : 0);
-                mob.point.maxHp = (int) ((mobTempId != 0) ? Math.min(totalDamage * mobTempId, 2_147_483_647) : 0);
+                mob.point.dame = (mobTempId != 0) ? (totalHp / mobTempId) : 0;  // Không giới hạn dame
+                mob.point.maxHp = (int) ((mobTempId != 0) ? Math.min(totalDamage * mobTempId, Integer.MAX_VALUE) : 0);
                 mob.lvMob = 0;
                 mob.hoiSinh();
                 mob.hoiSinhMobPhoBan();
@@ -143,7 +143,7 @@ public class RedRibbonHQ implements Runnable {
             if (zone.map.mapId == 59) {
                 try {
                     long bossDamage = Math.min(dame, 200_000_000L);
-                    long bossMaxHealth = Math.min(hp, 2_147_483_647L);
+                    long bossMaxHealth = Math.min(hp, Integer.MAX_VALUE);
                     bosses.add(new TrungUyTrang(
                             zone,
                             (int) bossDamage,
@@ -155,7 +155,7 @@ public class RedRibbonHQ implements Runnable {
             if (zone.map.mapId == 62) {
                 try {
                     long bossDamage = Math.min((long) (dame * 1.1), 200_000_000L);
-                    long bossMaxHealth = Math.min((long) (hp * 1.1), 2_147_483_647);
+                    long bossMaxHealth = Math.min((long) (hp * 1.1), Integer.MAX_VALUE);
                     bosses.add(new TrungUyXanhLo(
                             zone,
                             (int) bossDamage,
@@ -167,7 +167,7 @@ public class RedRibbonHQ implements Runnable {
             if (zone.map.mapId == 55) {
                 try {
                     long bossDamage = Math.min((long) (dame * 1.15), 200_000_000L);
-                    long bossMaxHealth = Math.min((long) (hp * 1.15), 2_147_483_647L);
+                    long bossMaxHealth = Math.min((long) (hp * 1.15), Integer.MAX_VALUE);
                     bosses.add(new TrungUyThep(
                             zone,
                             (int) bossDamage,
@@ -179,7 +179,7 @@ public class RedRibbonHQ implements Runnable {
             if (zone.map.mapId == 54) {
                 try {
                     long bossDamage = Math.min((long) (dame * 1.2), 200_000_000L);
-                    long bossMaxHealth = Math.min((long) (hp * 1.2), 2_147_483_647);
+                    long bossMaxHealth = Math.min((long) (hp * 1.2), Integer.MAX_VALUE);
                     bosses.add(new NinjaAoTim(
                             zone,
                             clan,
@@ -193,7 +193,7 @@ public class RedRibbonHQ implements Runnable {
             if (zone.map.mapId == 57) {
                 try {
                     long bossDamage = Math.min((long) (dame * 1.3), 200_000_000L);
-                    long bossMaxHealth = Math.min((long) (hp * 1.3), 2_147_483_647);
+                    long bossMaxHealth = Math.min((long) (hp * 1.3), Integer.MAX_VALUE);
                     for (int i = 0; i < 4; i++) {
                         bosses.add(new RobotVeSi(
                                 zone,
@@ -327,8 +327,8 @@ public class RedRibbonHQ implements Runnable {
                 if (mob.isDie()) {
                     continue;
                 }
-                mob.point.dame = (int) (totalHp / mob.tempId < 2_147_483_647 ? totalHp / mob.tempId : 2_147_483_647);
-                mob.point.maxHp = (int) (totalDame/3 * mob.tempId < 2_147_483_647 ? totalDame * mob.tempId : 2_147_483_647);
+                mob.point.dame = totalHp / mob.tempId;  // Không giới hạn dame
+                mob.point.maxHp = (int) Math.min(totalDame * mob.tempId, Integer.MAX_VALUE);
                 mob.point.hp = mob.point.maxHp;
                 mob.setTiemNang();
             }
