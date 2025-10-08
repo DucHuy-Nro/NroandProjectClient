@@ -113,7 +113,7 @@ public class PlayerService {
         sendInfoMp(player);
     }
 
-    public void hoiPhuc(Player player, int hp, int mp) {
+    public void hoiPhuc(Player player, long hp, long mp) {
         if (!player.isDie()) {
             player.nPoint.addHp(hp);
             player.nPoint.addMp(mp);
@@ -223,7 +223,7 @@ public class PlayerService {
             }
 
             if (player.isFly && player.getMount() == -1) {
-                int mp = player.nPoint.mpg / (100 * (player.effectSkill.isMonkey ? 2 : 1));
+                long mp = player.nPoint.mpg / (100 * (player.effectSkill.isMonkey ? 2 : 1));
                 hoiPhuc(player, 0, -mp);
             }
         }

@@ -181,8 +181,8 @@ public class EffectSkin {
                             }
                         }
                         for (Player pl : players) {
-                            int subHp = (int) ((long) pl.nPoint.hpMax * param / 100);
-                            int subMp = (int) ((long) pl.nPoint.mpMax * param / 100);
+                            long subHp = pl.nPoint.hpMax * param / 100;
+                            long subMp = pl.nPoint.mpMax * param / 100;
                             if (subHp >= pl.nPoint.hp) {
                                 subHp = pl.nPoint.hp - 1;
                             }
@@ -193,7 +193,7 @@ public class EffectSkin {
                             mpHut += subMp;
                             PlayerService.gI().sendInfoHpMpMoney(pl);
                             Service.gI().Send_Info_NV(pl);
-                            pl.injured(null, subHp, true, false);
+                            pl.injured(null, (int)subHp, true, false);
                         }
                         this.player.nPoint.addHp(hpHut);
                         this.player.nPoint.addMp(mpHut);
@@ -219,14 +219,14 @@ public class EffectSkin {
                             Player pl = playersMap.get(i);
                             if (pl != null && pl.nPoint != null && !this.player.equals(pl) && !pl.isBoss && !pl.isDie()
                                     && Util.getDistance(this.player, pl) <= 200) {
-                                int subHp = (int) ((long) pl.nPoint.hpMax * param / 100);
+                                long subHp = pl.nPoint.hpMax * param / 100;
                                 if (subHp >= pl.nPoint.hp) {
                                     subHp = pl.nPoint.hp - 1;
                                 }
                                 Service.gI().chat(pl, textOdo[Util.nextInt(0, textOdo.length - 1)]);
                                 PlayerService.gI().sendInfoHpMpMoney(pl);
                                 Service.gI().Send_Info_NV(pl);
-                                pl.injured(null, subHp, true, false);
+                                pl.injured(null, (int)subHp, true, false);
                             }
 
                         }
@@ -408,13 +408,13 @@ public class EffectSkin {
             if (this.player.effectSkill != null && this.player.effectSkill.isBinh && this.player.effectSkill.playerUseMafuba != null) {
                 if (Util.canDoWithTime(lastTimeMaPhongBa, 500) && this.player.effectSkill.playerUseMafuba.playerSkill != null) {
                     double param = this.player.effectSkill.playerUseMafuba.playerSkill.getSkillbyId(Skill.MA_PHONG_BA).point * (this.player.effectSkill.typeBinh == 0 ? 1 : 2);
-                    int subHp = (int) ((long) this.player.effectSkill.playerUseMafuba.nPoint.hpMax * param / 100);
+                    long subHp = this.player.effectSkill.playerUseMafuba.nPoint.hpMax * (long)param / 100;
                     if (subHp >= this.player.nPoint.hp) {
                         subHp = Math.abs(this.player.nPoint.hp - 100);
                     }
                     PlayerService.gI().sendInfoHpMpMoney(this.player);
                     Service.gI().Send_Info_NV(this.player);
-                    this.player.injured(this.player.effectSkill.playerUseMafuba, subHp, true, false);
+                    this.player.injured(this.player.effectSkill.playerUseMafuba, (int)subHp, true, false);
                     this.lastTimeMaPhongBa = System.currentTimeMillis();
                 }
             }
