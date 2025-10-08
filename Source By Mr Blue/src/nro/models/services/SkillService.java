@@ -403,11 +403,11 @@ public class SkillService {
         }
         switch (player.playerSkill.skillSelect.template.id) {
             case Skill.KAIOKEN:
-                int hpUse = player.nPoint.hpMax / 100 * 10;
+                int hpUse = (int) (player.nPoint.hpMax / 100 * 10);
                 if (player.setClothes.thanVuTruKaio == 4) {
-                    hpUse = player.nPoint.hpMax / 100 * 5;
+                    hpUse = (int) (player.nPoint.hpMax / 100 * 5);
                 } else if (player.setClothes.thanVuTruKaio == 5) {
-                    hpUse = player.nPoint.hpMax / 100 * 3;
+                    hpUse = (int) (player.nPoint.hpMax / 100 * 3);
                 }
                 if (player.nPoint.hp <= hpUse) {
                     break;
@@ -859,19 +859,19 @@ public class SkillService {
                     msg = new Message(56);
                     msg.writer().writeInt((int) plAtt.id);
                     if (damePST >= plAtt.nPoint.hp) {
-                        damePST = plAtt.nPoint.hp - 1;
+                        damePST = (int) (plAtt.nPoint.hp - 1);
                     }
                     if (plAtt.isBoss && !(plAtt instanceof Broly || plAtt instanceof SuperBroly)) {
                         if (damePST > plAtt.nPoint.hpMax / 100) {
                             int giamdame = 0;
                             if (plAtt.nPoint.hpMax / 200 > 1) {
-                                giamdame = Util.nextInt(plAtt.nPoint.hpMax / 200);
+                                giamdame = Util.nextInt((int) (plAtt.nPoint.hpMax / 200));
                             }
-                            damePST = plAtt.nPoint.hpMax / 100 - giamdame;
+                            damePST = (int) (plAtt.nPoint.hpMax / 100 - giamdame);
                         }
                     }
                     damePST = plAtt.injured(plAtt, damePST, true, false);
-                    msg.writer().writeInt(plAtt.nPoint.hp);
+                    msg.writer().writeInt((int) plAtt.nPoint.hp);
                     msg.writer().writeInt(damePST);
                     msg.writer().writeBoolean(false);
                     msg.writer().writeByte(36);
@@ -928,7 +928,7 @@ public class SkillService {
         hutHPMP(plAtt, dameHit, plInjure, null);
         if (plInjure instanceof Yardart) {
             if (plInjure.nPoint.hp < dameHit) {
-                dameHit = plInjure.nPoint.hp - 1;
+                dameHit = (int) (plInjure.nPoint.hp - 1);
                 if (dameHit == 0) {
                     return;
                 }
@@ -1063,7 +1063,7 @@ public class SkillService {
                     return player.nPoint.mp >= skill.manaUse;
                 }
                 case 1 -> {
-                    int mpUse = player.nPoint.mpMax * skill.manaUse / 100;
+                    int mpUse = (int) (player.nPoint.mpMax * skill.manaUse / 100);
                     return player.nPoint.mp >= mpUse;
                 }
                 case 2 -> {
