@@ -403,7 +403,7 @@ public class SkillService {
         }
         switch (player.playerSkill.skillSelect.template.id) {
             case Skill.KAIOKEN:
-                int hpUse = player.nPoint.hpMax / 100 * 10;
+                long hpUse = player.nPoint.hpMax / 100 * 10;
                 if (player.setClothes.thanVuTruKaio == 4) {
                     hpUse = player.nPoint.hpMax / 100 * 5;
                 } else if (player.setClothes.thanVuTruKaio == 5) {
@@ -853,7 +853,7 @@ public class SkillService {
         if (plAtt != null) {
             int percentPST = plTarget.nPoint.tlPST;
             if (percentPST != 0) {
-                int damePST = (int) (long) (dame * percentPST / 100L);
+                long damePST = dame * percentPST / 100L;
                 Message msg = null;
                 try {
                     msg = new Message(56);
@@ -865,13 +865,13 @@ public class SkillService {
                         if (damePST > plAtt.nPoint.hpMax / 100) {
                             int giamdame = 0;
                             if (plAtt.nPoint.hpMax / 200 > 1) {
-                                giamdame = Util.nextInt(plAtt.nPoint.hpMax / 200);
+                                giamdame = Util.nextInt((int)(plAtt.nPoint.hpMax / 200));
                             }
                             damePST = plAtt.nPoint.hpMax / 100 - giamdame;
                         }
                     }
                     damePST = plAtt.injured(plAtt, damePST, true, false);
-                    msg.writer().writeInt(plAtt.nPoint.hp);
+                    msg.writer().writeLong(plAtt.nPoint.hp);
                     msg.writer().writeInt(damePST);
                     msg.writer().writeBoolean(false);
                     msg.writer().writeByte(36);
@@ -918,7 +918,7 @@ public class SkillService {
                 dameAttack /= 3;
             }
         }
-        int dameHit = plInjure.injured(plAtt, miss ? 0 : dameAttack, false, false);
+        long dameHit = plInjure.injured(plAtt, miss ? 0 : dameAttack, false, false);
         if (plAtt.playerSkill == null) {
             return;
         }
@@ -1063,7 +1063,7 @@ public class SkillService {
                     return player.nPoint.mp >= skill.manaUse;
                 }
                 case 1 -> {
-                    int mpUse = player.nPoint.mpMax * skill.manaUse / 100;
+                    long mpUse = player.nPoint.mpMax * skill.manaUse / 100;
                     return player.nPoint.mp >= mpUse;
                 }
                 case 2 -> {
